@@ -1,18 +1,20 @@
 <?
 
 function custom_admin_branding_login() {
+global td;
 
+$custom_logo_id = get_theme_mod( 'custom_logo' );
+$image = wp_get_attachment_image_src( $custom_logo_id , 'full' );
+$logo = $image[0] ? $image[0] : td.'logo.png';
 ?>
   <style>
-  .login h1, #wp-admin-bar-wp-logo, #wp-admin-bar-comments, .menu-icon-comments, #contextual-help-link-wrap, #tipo-add-toggle, #wpcf-marketing, #base-code .deactivate, #base-code .edit, #base-code .check-column *, #wpcf-group-postmeta-fields-can-unfiltered-html { 
+  .login h1, #wp-admin-bar-wp-logo, #wp-admin-bar-comments, .menu-icon-comments, #contextual-help-link-wrap, #tipo-add-toggle, #wpcf-marketing, #wpcf-group-postmeta-fields-can-unfiltered-html { 
   display:none
   }
   #adminmenu { transform: translateZ(0); }
   #login form  { width:400px;
-    background: url('http://i59.tinypic.com/33w3w92.jpg') center 10px no-repeat;padding-top:140px;margin-left:-50px;
-    background-size:120px;}
-
-  .at-text{border:1px solid #ddd;border-radius:3px}
+    background: url(<?=$logo?>) center 10px no-repeat;padding-top:140px;margin-left:-50px;
+    background-size:contain;}
     
   </style>
  
@@ -25,22 +27,14 @@ function custom_admin_branding_login() {
   var timer = setInterval(count,1000);
   var secs=0, mins=0;
   setTimeout(function(){
-
     $('.updated.notice.notice-success p a').before('(<i>0.0</i> minutes ago) ');
   },300);
-  function count()
-  {  secs++;
-     if (secs==60){
-        secs = 0;
-        mins++;
-                 }
+  function count() {  secs++; if (secs==60){secs = 0; mins++; }
     $('.updated.notice.notice-success p i').text(mins+'.'+Math.floor(secs/60*100)); 
    //you can add hours if infinite minutes bother you
   }
    
-  });
-  
-  
+  });  
   </script>
   <?
   
