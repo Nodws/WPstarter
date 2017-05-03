@@ -22,9 +22,14 @@ Show less info to users on failed login for security.
 */
 
 function show_less_login_info() { 
-    return "<strong>ERROR</strong>: Stop guessing!"; 
+    return "<strong>ERROR</strong>!"; 
 }
 add_filter( 'login_errors', 'show_less_login_info' );
+
+/*
+Disable Admin bar
+*/
+add_filter('show_admin_bar', '__return_false');
 
 /*
 Do not generate and display WordPress version
