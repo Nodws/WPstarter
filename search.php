@@ -5,7 +5,7 @@
     
     <div class="col-sm-8">
       <div id="content" role="main">
-        <h1><?php _e('Search Results for', 'b4st'); ?> &ldquo;<?php the_search_query(); ?>&rdquo;</h1>
+        <h1><?php _e('Search Results for', 'wpst'); ?> &ldquo;<?php the_search_query(); ?>&rdquo;</h1>
         <hr/>
         <?php get_template_part('loops/content', 'search'); ?>
       </div><!-- /#content -->
