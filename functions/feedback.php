@@ -12,8 +12,8 @@ $logo = $image[0] ? $image[0] : td.'logo.png';
   }
   #adminmenu { transform: translateZ(0); }
   #login form  { width:400px;
-    background: url(<?=$logo?>) center 10px no-repeat;padding-top:140px;margin-left:-50px;
-    background-size:contain;}
+    background: url(<?=$logo?>) center 20px no-repeat;padding-top:240px;margin-left:-50px;
+    background-size:80%;}
     
   </style>
  
