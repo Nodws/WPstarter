@@ -1,7 +1,6 @@
 <?
 
 function custom_admin_branding_login() {
-//global td;
 
 $custom_logo_id = get_theme_mod( 'custom_logo' );
 $image = wp_get_attachment_image_src( $custom_logo_id , 'full' );
