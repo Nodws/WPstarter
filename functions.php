@@ -6,12 +6,12 @@ LOADING
 	define('tp', get_template_directory(''));
 	define('hd', esc_url(home_url( '/' )));
 	
-	require tp. '/functions/cleanup.php';
-	require tp. '/functions/setup.php';
-	require tp. '/functions/enqueues.php';
-	require tp. '/functions/navbar.php';
-	require tp. '/functions/widgets.php';
-	require tp. '/functions/search-widget.php';
-	require tp. '/functions/index-pagination.php';
-	require tp. '/functions/split-post-pagination.php';
-	require tp. '/functions/feedback.php';
+	require 'functions/cleanup.php';
+	require 'functions/setup.php';
+	require 'functions/enqueues.php';
+	require 'functions/navbar.php';
+	require 'functions/widgets.php';
+	require 'functions/search-widget.php';
+	require 'functions/index-pagination.php';
+	require 'functions/split-post-pagination.php';
+	require 'functions/feedback.php';
