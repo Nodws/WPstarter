@@ -130,7 +130,7 @@ if($_POST){
  $txt = addslashes($_POST[$val]);
   update_option($val, "$txt");
 }
-$val = stripslashes(get_option($val));  ?>"><?=stripslashes($val)?></textarea>
+$val = stripslashes(get_option($val));  ?>"><?=$val?></textarea>
 
 <? } else {
   $type = $widget[2] ? 'type="'.$widget[2].'"' : '';
@@ -141,7 +141,7 @@ if($_POST){
    $txt = addslashes($_POST[$val]);
   update_option($val, "$txt");
 }
-$val = stripslashes(get_option($val));  ?>" value="<?=stripslashes($val)?>" size=55>
+$val = stripslashes(get_option($val));  ?>" value="<?=$val?>" size=55>
 <?  } ?></td>
         </tr>
         <?php endforeach; ?> 
