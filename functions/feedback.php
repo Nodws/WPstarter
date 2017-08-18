@@ -135,13 +135,15 @@ $val = stripslashes(get_option($val));  ?>"><?=$val?></textarea>
 <? } else {
   $type = $widget[2] ? 'type="'.$widget[2].'"' : '';
  ?>
-          <input class="at-text" <?=$type?> name="<?php echo 'wpst_'.$widget[1];
-$val='wpst_'.$widget[1];
-if($_POST){
-   $txt = addslashes($_POST[$val]);
-  update_option($val, "$txt");
-}
-$val = stripslashes(get_option($val));  ?>" value="<?=$val?>" size=55>
+<input class="at-text" <?=$type?> name="<?php echo 'wpst_'.$widget[1];
+  $val='wpst_'.$widget[1];
+  if($_POST){
+     $txt = addslashes($_POST[$val]);
+    update_option($val, "$txt");
+  } ?>" <? $val = stripslashes(get_option($val)); if($widget[2] == 'checkbox'){ 
+    if($val==1)
+     echo "checked";
+     $val = 1; }  ?> value="<?=$val?>" size=55>
 <?  } ?></td>
         </tr>
         <?php endforeach; ?> 
