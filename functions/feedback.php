@@ -1,4 +1,11 @@
 <?
+function getoption($atts){
+		$a = shortcode_atts( array('name' => '' ), $atts );
+		return get_option($a[name] );
+	}
+add_shortcode('getoption','getoption');
+//get with the times Automattic
+add_filter('widget_text','do_shortcode');
 
 function custom_admin_branding_login() {
 
