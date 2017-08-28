@@ -10,7 +10,10 @@ function wpst_enqueues() {
 
 	wp_register_style('font-awesome-css', 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css', false, '4.7.0', null);
 	wp_enqueue_style('font-awesome-css');
-
+	
+  	wp_register_style('default-css', $td . 'style.css', false, null);
+	wp_enqueue_style('default-css');
+	
   	wp_register_style('wpst-css', $td . 'wpst.css', false, null);
 	wp_enqueue_style('wpst-css');
 
