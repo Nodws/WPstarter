@@ -1,14 +1,10 @@
-/* Max content widths */
-
-.size-auto, 
-.size-full,
-.size-large,
-.size-medium,
-.size-thumbnail {
-	max-width: 100%;
-	height: auto
+/* Tag defaults */
+img{
+  max-width:100%
 }
-
+a{
+ outline:0 !important;	
+}	
 /* Navbar */
 
 .navbar-topbar {
@@ -77,4 +73,22 @@
 
 .site-footer p {
   text-align: center
+}
+
+
+/* Media Queries */
+@media only screen and (max-width : 1200px) {
+
+}
+
+@media only screen and (max-width : 992px) {
+
+}
+
+@media only screen and (max-width : 768px) {
+
+}
+
+@media only screen and (max-width : 480px) {
+
 }

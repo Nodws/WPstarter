@@ -3,7 +3,7 @@
 LOADING
 */
 	define('td', get_bloginfo('template_directory').'/' );
-	define('tp', get_template_directory(''));
+	define('tp', get_template_directory('').'/');
 	define('hd', esc_url(home_url( '/' )));
 	
 	require 'functions/cleanup.php';

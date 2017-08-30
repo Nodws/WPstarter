@@ -1,4 +1,11 @@
 <?
+function getoption($atts){
+		$a = shortcode_atts( array('name' => '' ), $atts );
+		return get_option($a[name] );
+	}
+add_shortcode('getoption','getoption');
+//get with the times Automattic
+add_filter('widget_text','do_shortcode');
 
 function custom_admin_branding_login() {
 
@@ -59,10 +66,7 @@ function wpst_admin_init() {
   function wpst_widgets() {
     global $textos;
     /*
-    $textos = Array(
-        Array("Text","txt1"), //Single line text
-        Array("Text2","txb1", 1), //Textarea
-      );
+      Label, name, type
     */
     if(is_array($textos)):
       $ws=$textos;
@@ -71,14 +75,12 @@ function wpst_admin_init() {
         Array("Text 1","txt1"),
         Array("Text 2","txt2"),
         Array("text 3","txt3"),
-        Array("text 4","txt4"),
-        Array("text 5","txt5"),
-        Array("Text block","txb1", 1),
+        Array("Background","bg1","color"),
+        Array("Count","num1", "number"),
+        Array("Text block","txa1", "textarea"),
       );
     endif;
       return $ws;
-
-
   }
   function wpst_admin_menu() {
 
@@ -108,13 +110,11 @@ function wpst_admin_page() {
   <div class="wrap">
   <?php screen_icon(); ?>
   <h2><?php echo esc_html($title); ?></h2>
-
   <form method="post" action="">
     <?php settings_fields('wpst_options'); 
   if($_POST)
   echo '<div class="updated"><p>Actualizado con exito <i></i></p></div>';
-?>
-  
+?>  
     <table class="form-table">
       <tbody>
     <?php foreach($ws as $widget): ?>
@@ -123,37 +123,35 @@ function wpst_admin_page() {
             <label for="<?='wpst_'.$widget[1] ?>" title="<?='wpst_'.$widget[1] ?>"><?php echo $widget[0] ?></label>
           </th>
           <td>
-          <? if(isset($widget[2])) { ?>
-          
+          <? if($widget[2]=='textarea') { ?>    
           <textarea  cols=60 rows=5 name="<?php echo 'wpst_'.$widget[1];
 $val='wpst_'.$widget[1];
 if($_POST){
-
-  update_option($val, "$_POST[$val]");
+ $txt = addslashes($_POST[$val]);
+  update_option($val, "$txt");
 }
 $val = stripslashes(get_option($val));  ?>"><?=$val?></textarea>
 
-<? } else { ?>
-          <input class="at-text" name="<?php echo 'wpst_'.$widget[1];
-$val='wpst_'.$widget[1];
-if($_POST){
-
-  update_option($val, "$_POST[$val]");
-}
-$val = stripslashes(get_option($val));  ?>" value="<?=$val?>" size=55>
+<? } else {
+  $type = $widget[2] ? 'type="'.$widget[2].'"' : '';
+ ?>
+<input class="at-text" <?=$type?> name="<?php echo 'wpst_'.$widget[1];
+  $val='wpst_'.$widget[1];
+  if($_POST){
+     $txt = addslashes($_POST[$val]);
+    update_option($val, "$txt");
+  } ?>" <? $val = stripslashes(get_option($val)); if($widget[2] == 'checkbox'){ 
+    if($val==1)
+     echo "checked";
+     $val = 1; }  ?> value="<?=$val?>" size=55>
 <?  } ?></td>
         </tr>
-
-
-    <?php endforeach; ?> 
+        <?php endforeach; ?> 
       </tbody>
     </table>  
     <p class="submit">
       <input type="submit" class="button-primary" value="<?php _e('Save Changes') ?>" />
-    </p>
-  
-
-  </div>
+    </p>  </div>
 <?php
 }
 add_action('admin_menu', 'wpst_admin_menu');
