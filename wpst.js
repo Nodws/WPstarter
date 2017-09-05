@@ -1,5 +1,5 @@
 (function ($) {
 
-	console.log('WPstarter Loaded \n Newemage.com');
+	console.log('WPstarter Loaded on: '+ Date() +' \n Newemage.com');
 
 }(jQuery));
