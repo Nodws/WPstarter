@@ -1,10 +1,27 @@
 /* Tag defaults */
-img{
-  max-width:100%
+body,
+html {
+	font-family: sans-serif;
+  height:100%
 }
-a{
- outline:0 !important;	
-}	
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	font-weight: 600
+}
+
+a {
+	color: #292b2c;
+	outline:0 !important;	
+}
+
+hr {
+	opacity: 0.4
+}
 /* Navbar */
 
 .navbar-topbar {
