@@ -27,6 +27,5 @@ The Single Posts Loop
         </section>
     </article>
 <?php endwhile; ?>
-<?php else: ?>
-<?php wp_redirect(get_bloginfo('siteurl').'/404', 404); exit; ?>
+
 <?php endif; ?>

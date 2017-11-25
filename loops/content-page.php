@@ -13,7 +13,5 @@ The Page Loop
         <?php the_content()?>
         <?php wp_link_pages(); ?>
     </article>
-<?php endwhile; else: ?>
-<?php wp_redirect(get_bloginfo('siteurl').'/404', 404); ?>
-<?php exit; ?>
+<?php endwhile; ?>
 <?php endif; ?>
