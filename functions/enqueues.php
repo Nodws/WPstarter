@@ -4,6 +4,7 @@ function wpst_enqueues() {
 
 	/* Styles */
 	$td = td;
+	$nc = isset($_GET['nc']) ? '?'.rand(0,9999) : '';
 
 	wp_register_style('bootstrap-css', 'https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css', false, '4.0.0', null);
 	wp_enqueue_style('bootstrap-css');
@@ -11,10 +12,10 @@ function wpst_enqueues() {
 	wp_register_style('font-awesome-css', 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css', false, '4.7.0', null);
 	wp_enqueue_style('font-awesome-css');
 	
-  	wp_register_style('default-css', $td . 'style.css', false, null);
+  	wp_register_style('default-css', $td . 'style.css'.$nc, false, null);
 	wp_enqueue_style('default-css');
 	
-  	wp_register_style('wpst-css', $td . 'wpst.css', false, null);
+  	wp_register_style('wpst-css', $td . 'wpst.css'.$nc, false, null);
 	wp_enqueue_style('wpst-css');
 
 	/* Scripts */
