@@ -3,18 +3,21 @@
 /**
  * Template name: Sidebar
  *
- * @package fullbase
+ * @package wpst
  */
 ?>
 <?php get_header();
 ?>
-<div class="container">
+<div class="container-fluid">
   <div class="row">
     
     <div class="col-sm-8">
-      <div id="content" role="main">
-          <?php get_template_part('loops/content', get_post_format()); ?>
-      </div><!-- /#content -->
+     <?php
+  if (have_posts()) : while(have_posts()) : the_post();
+  the_content( );
+
+  endwhile; endif;
+ ?>
     </div>
     
     <div class="col-sm-4" id="sidebar" role="navigation">
@@ -23,3 +26,6 @@
     
   </div><!-- /.row -->
 </div><!-- /.container -->
+
+
+<?php get_footer(); ?>
