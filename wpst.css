@@ -22,6 +22,14 @@ a {
 hr {
 	opacity: 0.4
 }
+
+/* Brand */
+
+
+.custom-logo-link {
+	width:150px;	
+}
+
 /* Navbar */
 
 .navbar-topbar {
