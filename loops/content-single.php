@@ -12,18 +12,16 @@ The Single Posts Loop
             <h5>
                 <em>
                     <span class="text-muted author"><?php _e('By', 'wpst'); echo " "; the_author() ?>,</span>
-                    <time  class="text-muted" datetime="<?php the_time('d-m-Y')?>"><?php the_time('jS F Y') ?></time>
+                    <time  class="text-muted" datetime="<?php the_time('d-m-Y')?>"><?php the_time('j F Y') ?></time>
                 </em>
             </h5>
             <p class="text-muted" style="margin-bottom: 30px;">
-                <i class="fa fa-folder-open-o"></i>&nbsp; <?php _e('Filed under', 'wpst'); ?>: <?php the_category(', ') ?><br/>
-                <i class="fa fa-comment-o"></i>&nbsp; <?php _e('Comments', 'wpst'); ?>: <?php comments_popup_link(__('None', 'wpst'), '1', '%'); ?>
+                <i class="fa fa-folder-open-o"></i>&nbsp; <?php _e('Filed under', 'wpst'); ?>: <?php the_category(', ') ?>
             </p>
         </header>
         <section>
             <?php the_post_thumbnail(); ?>
             <?php the_content()?>
-            <?php wp_link_pages(); ?>
         </section>
     </article>
 <?php endwhile; ?>
