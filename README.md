@@ -4,10 +4,9 @@ Bootstrap 4 starter theme for wordpress
 
 ### TO DO
 - [ ] Add top menu
-- [ ] Add layout options
+- [ ] Add layout options (sidebar, nav positions)
 - [ ] Integrate social icons
 - [ ] Adjust responsive
-- [ ] More theme options (nav color, primary color, nav align, ssl)
-- [ ] Support Custom post types
-- [ ] Support Tax and terms
+- [ ] More theme options (nav color, primary color, nav align, fonts, ssl)
+- [ ] Support Custom post types, Tax and terms
 - [ ] Add cover images
