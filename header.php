@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html class="no-js">
 <head>
-	<title><?php wp_title('•', true, 'right'); bloginfo('name'); ?></title>
+	<title><?php wp_title('•', true, 'right'); bloginfo('name'); if(is_front_page()){ echo " | "; bloginfo('description'); } ?> </title>
 	<meta charset="utf-8">
 	<!-- <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests"> -->
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
