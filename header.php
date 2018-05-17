@@ -11,7 +11,7 @@
 
 <body <?php body_class(); ?>>
 
-<nav class="navbar navbar-expand-lg navbar-toggleable-md navbar-inverse bg-primary">
+<nav class="navbar navbar-dark navbar-expand-lg navbar-toggleable-md navbar-inverse bg-dark">
   <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
