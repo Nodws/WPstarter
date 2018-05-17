@@ -21,7 +21,12 @@ $logo = $image[0] ? $image[0] : td.'logo.png';
   #login form  { width:400px;
     background: url(<?=$logo?>) center 20px no-repeat;padding-top:240px;margin-left:-50px;
     background-size:80%;}
-    
+    #opciones label{
+       user-select: none;
+    }
+    #opciones .hide{
+      position: absolute; width: 5px; padding: 0px; border:0px; opacity:0
+    }
   </style>
  
     <script>
@@ -39,7 +44,17 @@ $logo = $image[0] ? $image[0] : td.'logo.png';
     $('.updated.notice.notice-success p i').text(mins+'.'+Math.floor(secs/60*100)); 
    //you can add hours if infinite minutes bother you
   }
-   
+   $("#opciones label").on("click",function(e){
+     e.preventDefault();
+     e.stopPropagation();
+    let txt = $(this).attr('title'),
+      el = $(this).next('input');
+      el.val(txt);
+      el.select(); 
+    console.log(txt);
+    document.execCommand('copy');
+    el.blur();
+   });
   });  
   </script>
   <?
@@ -115,12 +130,12 @@ function wpst_admin_page() {
   if($_POST)
   echo '<div class="updated"><p>Actualizado con exito <i></i></p></div>';
 ?>  
-    <table class="form-table">
+    <table class="form-table" id="opciones">
       <tbody>
     <?php foreach($ws as $widget): ?>
         <tr valign="top">
           <th scope="row">
-            <label for="<?='wpst_'.$widget[1] ?>" title="<?='wpst_'.$widget[1] ?>"><?php echo $widget[0] ?></label>
+            <label title="<?='wpst_'.$widget[1] ?>"><?php echo $widget[0] ?></label><input class="hide">
           </th>
           <td>
           <? if($widget[2]=='textarea') { ?>    
@@ -130,7 +145,7 @@ if($_POST){
  $txt = addslashes($_POST[$val]);
   update_option($val, "$txt");
 }
-$val = stripslashes(get_option($val));  ?>"><?=$val?></textarea>
+$val = noslash(get_option($val));  ?>"><?=$val?></textarea>
 
 <? } else {
   $type = $widget[2] ? 'type="'.$widget[2].'"' : '';
@@ -140,7 +155,7 @@ $val = stripslashes(get_option($val));  ?>"><?=$val?></textarea>
   if($_POST){
      $txt = addslashes($_POST[$val]);
     update_option($val, "$txt");
-  } ?>" <? $val = stripslashes(get_option($val)); if($widget[2] == 'checkbox'){ 
+  } ?>" <? $val = noslash(get_option($val)); if($widget[2] == 'checkbox'){ 
     if($val==1)
      echo "checked";
      $val = 1; }  ?> value="<?=$val?>" size=55>
@@ -155,3 +170,7 @@ $val = stripslashes(get_option($val));  ?>"><?=$val?></textarea>
 <?php
 }
 add_action('admin_menu', 'wpst_admin_menu');
+
+function noslash($txt){
+  return str_replace('\\','',trim($txt));
+}
