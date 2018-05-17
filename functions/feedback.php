@@ -130,7 +130,7 @@ if($_POST){
  $txt = addslashes($_POST[$val]);
   update_option($val, "$txt");
 }
-$val = stripslashes(get_option($val));  ?>"><?=$val?></textarea>
+$val = noslash(get_option($val));  ?>"><?=$val?></textarea>
 
 <? } else {
   $type = $widget[2] ? 'type="'.$widget[2].'"' : '';
@@ -140,7 +140,7 @@ $val = stripslashes(get_option($val));  ?>"><?=$val?></textarea>
   if($_POST){
      $txt = addslashes($_POST[$val]);
     update_option($val, "$txt");
-  } ?>" <? $val = stripslashes(get_option($val)); if($widget[2] == 'checkbox'){ 
+  } ?>" <? $val = noslash(get_option($val)); if($widget[2] == 'checkbox'){ 
     if($val==1)
      echo "checked";
      $val = 1; }  ?> value="<?=$val?>" size=55>
@@ -155,3 +155,7 @@ $val = stripslashes(get_option($val));  ?>"><?=$val?></textarea>
 <?php
 }
 add_action('admin_menu', 'wpst_admin_menu');
+
+function noslash($txt){
+  return str_replace('\\','',trim($txt));
+}
