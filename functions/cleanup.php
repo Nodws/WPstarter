@@ -40,6 +40,7 @@ function no_generator()  {
 }
 add_filter( 'the_generator', 'no_generator' );
 
+add_filter('xmlrpc_enabled', '__return_false');
 
 //Disable rubbish code 
 function disable_wp_emojicons() {
