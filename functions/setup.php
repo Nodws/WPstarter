@@ -52,6 +52,14 @@ add_filter('excerpt_more', 'wpst_excerpt_readmore');
 	/*  Remove P in description output
 	/* ------------------------------------ */
 	remove_filter('term_description','wpautop');
+function override_mce_options($initArray)
+   {
+        $opts = '*[*]';
+        $initArray['valid_elements'] = $opts;
+        $initArray['extended_valid_elements'] = $opts;
+        return $initArray;
+    }
+add_filter('tiny_mce_before_init', 'override_mce_options');
 
 
 	/*  Add Excerpt on Pages for Seo description
@@ -71,3 +79,10 @@ add_filter('excerpt_more', 'wpst_excerpt_readmore');
 	return $args;
 	}
 	add_filter('wp_terms_checklist_args','taxonomy_checklist_checked_ontop_filter');
+//Footer
+function remove_footer_admin () {
+	$theme = wp_get_theme();
+echo 'by '.$theme->display( 'Author', FALSE );
+}
+add_filter('admin_footer_text', 'remove_footer_admin');
+
