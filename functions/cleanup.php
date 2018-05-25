@@ -15,6 +15,8 @@ remove_action('wp_head', 'feed_links', 2);
 remove_action('wp_head', 'feed_links_extra', 3);
 remove_action('wp_head', 'adjacent_posts_rel_link_wp_head', 10, 0);
 remove_action('wp_head', 'wp_shortlink_wp_head', 10, 0);
+remove_action('welcome_panel', 'wp_welcome_panel');
+
 
 /*
 Show less info to users on failed login for security.
@@ -40,8 +42,20 @@ function no_generator()  {
 }
 add_filter( 'the_generator', 'no_generator' );
 
+add_filter('xmlrpc_enabled', '__return_false');
 
-//Disable rubbish code 
+//Disable rubbish code
+function disable_default_dashboard_widgets()
+   {
+      // disable default dashboard widgets
+      //remove_meta_box('dashboard_right_now', 'dashboard', 'core');
+      remove_meta_box('dashboard_recent_comments', 'dashboard', 'core');
+      remove_meta_box('dashboard_recent_drafts', 'dashboard', 'core');
+      remove_meta_box('dashboard_quick_press', 'dashboard', 'core');
+      remove_meta_box('dashboard_recent_drafts', 'dashboard', 'core');
+   }
+add_action('admin_menu', 'disable_default_dashboard_widgets');
+
 function disable_wp_emojicons() {
 
   // all actions related to emojis

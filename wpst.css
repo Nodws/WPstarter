@@ -1,9 +1,9 @@
+/* 
+	PROJECT NAME
+*/
+
+
 /* Tag defaults */
-body,
-html {
-	font-family: sans-serif;
-  height:100%
-}
 
 h1,
 h2,
@@ -11,23 +11,23 @@ h3,
 h4,
 h5,
 h6 {
-	font-weight: 600
+  font-weight: 600
 }
 
 a {
-	color: #292b2c;
-	outline:0 !important;	
+  color: #292b2c;
+  outline:0 !important;	
 }
 
 hr {
-	opacity: 0.4
+  opacity: 0.4
 }
 
 /* Brand */
 
 
 .custom-logo-link {
-	width:150px;	
+  width:150px;	
 }
 
 /* Navbar */
@@ -41,6 +41,11 @@ hr {
   margin-left: 0 !important;
 }
 
+.f-nav{
+    position:fixed;
+    width:100%;
+    z-index:999
+}
 
 /* Main content */
 
