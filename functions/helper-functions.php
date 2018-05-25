@@ -4,10 +4,16 @@
 if( !current_user_can('editor') && !current_user_can('administrator') ):
 	add_action('wp_logout','auto_redirect_after_logout');
 	function auto_redirect_after_logout(){
-	  wp_redirect( home_url().'/?welcome' );
+	  wp_redirect( home_url('/?hello') );
 	  exit();
 	}
 endif;
+
+//Redirect on register
+function auto_registration_redirect(){
+	return home_url('/?welcome');
+}
+add_filter('registration_redirect', 'auto_registration_redirect');
 
 /* States Dropdown */
     function estados($s=''){
@@ -48,3 +54,10 @@ $("#estado").on("change",function(e){
 <link rel="stylesheet" href="https://harvesthq.github.io/chosen/chosen.css">
 <?php
     }
+
+//Tinyurl
+function tinyurl( $url ) 
+{ 
+$tiny_url = file_get_contents( "http://tinyurl.com/api-create.php?url=".$url ); 
+return $tiny_url;
+} 
