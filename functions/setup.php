@@ -35,12 +35,17 @@ function wpst_setup() {
 		'flex-height' => true,
 		'flex-width'  => true,
 		) );
-	add_theme_support( 'woocommerce' );
+	
 
    if(false === get_option("medium_crop")) { add_option("medium_crop", "1");  }
      else {       update_option("medium_crop", "1");     }
 }
 add_action('init', 'wpst_setup');
+
+function add_woo_support() {
+	add_theme_support( 'woocommerce' );
+}
+add_action( 'after_setup_theme', 'add_woo_support' );
 
 //Annoying search redirect
 add_filter( 'woocommerce_redirect_single_search_result', '__return_false' );
