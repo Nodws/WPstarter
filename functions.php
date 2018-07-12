@@ -11,7 +11,7 @@ require 'functions/search-widget.php';
 require 'functions/index-pagination.php';
 require 'functions/split-post-pagination.php';
 require 'functions/feedback.php';
-require 'helper-functions.php';
+//require 'helper-functions.php';
 
 /* shortcodes.php */
 function shortcode_news($atts) {
