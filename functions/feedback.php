@@ -1,11 +1,22 @@
 <?
-function getoption($atts){
-		$a = shortcode_atts( array('name' => '' ), $atts );
-		return get_option($a[name] );
-	}
-add_shortcode('getoption','getoption');
-//get with the times Automattic
-add_filter('widget_text','do_shortcode');
+/**
+ * @package 
+ * by nodws.com follow me @nodws
+ */ 
+
+$o_k = "wpst_";
+$title = "Site Options";
+$options =  [
+        'Option 1'=>'text',
+        'Option 2'=>'text',
+        'Option 3'=>'text',
+        'Color 1'=>'color',
+        'Color 2'=>'color',
+        'Block 1'=>'textarea',
+        'Block 2'=>'textarea',
+        'Option 4'=>'text',
+      ];
+
 
 function custom_admin_branding_login() {
 
@@ -63,114 +74,110 @@ $logo = $image[0] ? $image[0] : td.'logo.png';
 
 add_action('login_head', 'custom_admin_branding_login');
 add_action('admin_head', 'custom_admin_branding_login', 11);
-/**
- *  Add options page to admin menu
- *  @args   none
- *  @return void
- */
-function wpst_admin_init() {
-  $widgets =  wpst_widgets();
-  if($widgets){
-    foreach($widgets as $widget) {
-      register_setting('wpst_options', 'wpst_'.$widget['id']);
-    }
-  }
-}
 
-// Custom options, Label, name, optional if textarea
+
   function wpst_widgets() {
-    global $textos;
-    /*
-      Label, name, type
-    */
-    if(is_array($textos)):
-      $ws=$textos;
-      else:
-      $ws=Array(
-        Array("Text 1","txt1"),
-        Array("Text 2","txt2"),
-        Array("text 3","txt3"),
-        Array("Background","bg1","color"),
-        Array("Count","num1", "number"),
-        Array("Text block","txa1", "textarea"),
-      );
+    global $options;
+ 
+    if(!is_array($options)):
+      $options =  [
+        'Option 1'=>'text',
+        'Option 2'=>'text',
+        'Option 3'=>'text',
+        'Block 2'=>'textarea',
+      ];
+   
     endif;
-      return $ws;
+      return $options;
   }
   function wpst_admin_menu() {
-
-  // redirect if user not admin
+  // soft redirect if user not admin
     /*  if ( !current_user_can('edit_users') )
      {
       echo"<script>top.location='../'</script>";
-      }
-       */
-
-  if (function_exists('add_dashboard_page')) {
-     add_dashboard_page('Options', 'Opciones', 'edit_users', __FILE__, 'wpst_admin_page');
+      }  */
+     add_dashboard_page('Options', 'Opciones', 'edit_users', 'options', 'wpst_admin_page');
   }
- }
 
-/**
- *  Generate options page content
- *  @args   none
- *  @return string
- */
 function wpst_admin_page() {
-
-  if (empty($title)) $title = __('Options');
-  $ws = wpst_widgets(); 
-
+  global $o_k, $title;
 ?>
-  <div class="wrap">
-  <?php screen_icon(); ?>
-  <h2><?php echo esc_html($title); ?></h2>
+  <div class="wrap">  
+ 
+  <h1><i class="wp-menu-image dashicons-before dashicons-admin-settings" style="color:#333"></i><?=$title?></h1>
+
   <form method="post" action="">
     <?php settings_fields('wpst_options'); 
   if($_POST)
   echo '<div class="updated"><p>Actualizado con exito <i></i></p></div>';
 ?>  
-    <table class="form-table" id="opciones">
+    <table class="form-table">
       <tbody>
-    <?php foreach($ws as $widget): ?>
-        <tr valign="top">
-          <th scope="row">
-            <label title="<?='wpst_'.$widget[1] ?>"><?php echo $widget[0] ?></label><input class="hide">
-          </th>
-          <td>
-          <? if($widget[2]=='textarea') { ?>    
-          <textarea  cols=60 rows=5 name="<?php echo 'wpst_'.$widget[1];
-$val='wpst_'.$widget[1];
-if($_POST){
- $txt = addslashes($_POST[$val]);
-  update_option($val, "$txt");
-}
-$val = noslash(get_option($val));  ?>"><?=$val?></textarea>
+    <?php  
+    $n = [];
+    foreach(wpst_widgets() as $k => $wd):          
+         $n[$wd] =  isset($n[$wd]) ? $n[$wd] + 1 : 1 ;
+         $i = $n[$wd];
+         $v_k = $wd.$i;
+         $var=$o_k.$v_k;
+    ?>
+    <tr><th><label for="<?=$var ?>" title="<?=$v_k ?>"><?=$k?></label></th><td>
+ <? 
+  //if widget textarea
+ if($wd=='textarea'):           
+  if($_POST)
+    update_option($var, base64_encode($_POST[$var]));  
+    ?>
+      <textarea  cols=60 rows=5 name="<?=$var?>"><?=get_var($v_k)?></textarea>
+    <? //else single line 
+    else:   
+  if($_POST)
+    update_option($var, base64_encode($_POST[$var]));
+       ?>
+      <input type="<?=$wd?>" name="<?=$var ?>" value="<?=get_var($v_k)?>" size=55>
+    <? 
+      endif; //end if widget 
+    ?></td>        </tr>
 
-<? } else {
-  $type = $widget[2] ? 'type="'.$widget[2].'"' : '';
- ?>
-<input class="at-text" <?=$type?> name="<?php echo 'wpst_'.$widget[1];
-  $val='wpst_'.$widget[1];
-  if($_POST){
-     $txt = addslashes($_POST[$val]);
-    update_option($val, "$txt");
-  } ?>" <? $val = noslash(get_option($val)); if($widget[2] == 'checkbox'){ 
-    if($val==1)
-     echo "checked";
-     $val = 1; }  ?> value="<?=$val?>" size=55>
-<?  } ?></td>
-        </tr>
-        <?php endforeach; ?> 
+    <?php endforeach; 
+      ?> 
       </tbody>
     </table>  
     <p class="submit">
-      <input type="submit" class="button-primary" value="<?php _e('Save Changes') ?>" />
-    </p>  </div>
+      <input type="submit" class="button-primary" value="Update" />
+    </p>
+  <blockquote style="font-size:12px;background:  #fff;padding: 20px;">
+    Call with <b>&lt;?=get_var('text1')?></b> or <b>[get_var id='text1']</b>
+  </blockquote>
+
+  </div>
 <?php
 }
+
 add_action('admin_menu', 'wpst_admin_menu');
+
+
+function getoption($atts){
+		$a = shortcode_atts( array('id' => '' ), $atts );
+		return get_var($a[id]);
+	}
+add_shortcode('get_var','getoption');
+//get with the times Automattic
+add_filter('widget_text','do_shortcode');
+
+function get_var($var,$fun=false){
+  global $o_k;
+  $r = noslash(base64_decode(get_option($o_k.$var)));
+  if(!$fun)
+    return $r;
+  elseif($fun===true)
+    echo $r;
+  else
+    return $fun($r);
+
+}
 
 function noslash($txt){
   return str_replace('\\','',trim($txt));
 }
+

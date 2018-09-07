@@ -18,6 +18,9 @@ remove_action('wp_head', 'wp_shortlink_wp_head', 10, 0);
 remove_action('welcome_panel', 'wp_welcome_panel');
 remove_filter('comment_text', 'make_clickable', 9);
 
+// Remove trash feature
+remove_action( 'try_gutenberg_panel', 'wp_try_gutenberg_panel' );
+
 
 /*
 Show less info to users on failed login for security.

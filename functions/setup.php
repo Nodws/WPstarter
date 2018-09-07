@@ -59,7 +59,7 @@ function wpst_excerpt_readmore() {
 add_filter('excerpt_more', 'wpst_excerpt_readmore');
 
 // Fix no shortcodes in widget bug
-add_filter('widget_text', 'do_shortcode')
+add_filter('widget_text', 'do_shortcode');
 	
 // Disable Gallery Inline Style
 	add_filter( 'use_default_gallery_style', '__return_false' );
