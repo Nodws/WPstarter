@@ -12,17 +12,11 @@
 		<h2><?php the_title()?></h2>	
 	</div>
 </div>
-<div class="container">
-  <div class="row">
-    
-    <div class="col-12">
-      <div id="content" role="main">
-          <?php the_content(); ?>
+
+<?php if(have_posts()): while(have_posts()): the_post();?>
+      <div id="content" class="container" role="main">
+          <?php echo the_content();
+           ?>
       </div><!-- /#content -->
-    </div>
-    
-   
-    
-  </div><!-- /.row -->
-</div><!-- /.container -->
+   <? endwhile; endif; ?>
 <?php get_footer(); ?>
