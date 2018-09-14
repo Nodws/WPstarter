@@ -3,6 +3,10 @@
 */
 
 
+:root {
+   --blue: #0168a5
+}
+
 /* Tag defaults */
 
 h1,
@@ -15,7 +19,7 @@ h6 {
 }
 
 a {
-  color: #292b2c;
+  color: var(--blue);
   outline:0 !important;	
 }
 
@@ -48,6 +52,13 @@ hr {
 }
 
 /* Main content */
+
+.cover {
+   color: #fff;
+   text-align: center;
+   padding: 280px 0 100px 0;
+   background-position: center;
+}
 
 #content article {
   margin: 40px 0
