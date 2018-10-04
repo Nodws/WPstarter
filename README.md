@@ -9,4 +9,4 @@ Bootstrap 4 starter theme for wordpress
 - [ ] Adjust responsive
 - [ ] More theme options (nav color, primary color, nav align, fonts, ssl)
 - [ ] Support Custom post types, Tax and terms
-- [ ] Add cover images
+- [ ] Close comments by default
