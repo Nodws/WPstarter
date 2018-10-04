@@ -128,7 +128,7 @@ function wpst_dashboard_widgets() {
 	wp_add_dashboard_widget('custom_help_widget', 'Welcome', 'wpst_dash'); 
 } 
 function wpst_dash() { 
-	echo '<p>Welcome to The Starter theme, go to <a href="?page='.tp.'/functions/feedback.php">options</a> to start customizing.</p>'; 
+	echo '<p>Welcome to The Starter theme, go to <a href="?page=options">options</a> to start customizing.</p>'; 
 } 
 
 //Footer
