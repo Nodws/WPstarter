@@ -12,10 +12,9 @@
 <body <?php body_class(); ?>>
 
 <nav class="navbar navbar-dark navbar-expand-lg  nav-container navbar-toggleable-md navbar-inverse bg-dark">
-  <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-     <? the_custom_logo(); ?>
+
+     <? the_custom_logo(); ?> 
+  <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation"> <span class="fa fa-bars"></span> </button>
   <div class="collapse navbar-collapse" id="navbarNavDropdown">
 		<?php
       wp_nav_menu( array(
