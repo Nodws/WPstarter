@@ -25,7 +25,7 @@ $image = wp_get_attachment_image_src( $custom_logo_id , 'full' );
 $logo = $image[0] ? $image[0] : td.'logo.png';
 ?>
   <style>
-  .login h1, #wp-admin-bar-wp-logo, #wp-admin-bar-comments, .menu-icon-comments, #contextual-help-link-wrap, #tipo-add-toggle, #wpcf-marketing, #wpcf-group-postmeta-fields-can-unfiltered-html { 
+  .login h1, #wp-admin-bar-wp-logo, #wp-admin-bar-comments, .menu-icon-comments, #contextual-help-link-wrap, #tipo-add-toggle, #wpcf-marketing, #wpcf-group-postmeta-fields-can-unfiltered-html, .notice.elementor-message, .updated.error.otgs-is-dismissible { 
   display:none
   }
   #adminmenu { transform: translateZ(0); }
