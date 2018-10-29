@@ -35,3 +35,11 @@ function wpst_enqueues() {
 	
 }
 add_action('wp_enqueue_scripts', 'wpst_enqueues', 100);
+
+function wpst_admin() {
+  	$td = td;
+  	wp_register_style('wpst-admin', $td . 'functions/admin.php?l=css', false, null);
+  	wp_enqueue_style('wpst-admin');
+    wp_enqueue_script( 'wpst-admin', $td . 'functions/admin.php?l=js' );
+}
+add_action( 'admin_enqueue_scripts', 'wpst_admin' );
