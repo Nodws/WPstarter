@@ -23,6 +23,14 @@ define('WP_AUTO_UPDATE_CORE', false );
 //define( 'WP_DEBUG', true );
 //ini_set( 'display_errors', 'On' );
 
+//Disable API
+add_filter( 'rest_api_init', 'rest_only_for_authorized_users', 99 );
+function rest_only_for_authorized_users($wp_rest_server){
+    if ( !is_user_logged_in() ) 
+        wp_die('sorry you are not allowed to access this data','cheatin eh?',403);    
+}
+
+
 function wpst_setup() {
 	//add_editor_style('theme/css/editor-style.css');
 	add_theme_support('post-thumbnails');
