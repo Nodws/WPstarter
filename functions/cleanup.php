@@ -21,6 +21,8 @@ remove_filter('comment_text', 'make_clickable', 9);
 // Remove trash feature
 remove_action( 'try_gutenberg_panel', 'wp_try_gutenberg_panel' );
 
+//Disable very useful modals that log you out
+remove_action( 'admin_enqueue_scripts', 'wp_auth_check_load' );
 
 /*
 Show less info to users on failed login for security.
