@@ -88,3 +88,11 @@ function disable_emojicons_tinymce( $plugins ) {
     return array();
   }
 }
+
+/*
+Disable nagging
+*/
+add_action('admin_head', function() {
+ remove_action( 'admin_notices', 'update_nag',      3  );
+remove_action( 'admin_notices', 'maintenance_nag', 10 );
+});
