@@ -6,7 +6,7 @@ define('hd', esc_url(home_url( '/' )));
 //Get temes path
 define('tp', get_template_directory('').'/');
 //Get home path
-define('hp', get_home_path());
+define('hp', ABSPATH);
 	
 //Wp post schlep
 define('AUTOSAVE_INTERVAL', 3600 ); 
