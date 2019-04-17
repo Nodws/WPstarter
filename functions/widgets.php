@@ -17,10 +17,10 @@ function wpst_widgets_init() {
 
 
   register_sidebar( array(
-    'name'            => __( 'Footer 3', 'wpst' ),
+    'name'            => __( 'Footer', 'wpst' ),
     'id'              => 'footer-widget-area',
-    'description'     => __( 'The footer widget area col-sm-4', 'wpst' ),
-    'before_widget'   => '<div class="%1$s %2$s col-sm-4">',
+    'description'     => __( 'The footer widget area cols', 'wpst' ),
+    'before_widget'   => '<div class="%1$s %2$s col">',
     'after_widget'    => '</div>',
     'before_title'    => '<h4>',
     'after_title'     => '</h4>',
