@@ -8,7 +8,11 @@
         <h1>Category: <?php echo single_cat_title(); ?></h1>
         <hr>
         <?php get_template_part('loops/content', get_post_format()); ?>
+          <nav class="pagination">
+    <? wpst_pagination(); ?>
+    </nav>
       </div><!-- /#content -->
+      
     </div>
     
     <div class="col-sm-4" id="sidebar" role="navigation">
