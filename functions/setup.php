@@ -54,6 +54,9 @@ add_action('init', 'wpst_setup');
 
 function add_woo_support() {
 	add_theme_support( 'woocommerce' );
+	add_theme_support( 'wc-product-gallery-zoom' );
+	add_theme_support( 'wc-product-gallery-lightbox' );
+	add_theme_support( 'wc-product-gallery-slider' );
 }
 add_action( 'after_setup_theme', 'add_woo_support' );
 
