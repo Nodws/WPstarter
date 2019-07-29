@@ -21,7 +21,19 @@ remove_filter('comment_text', 'make_clickable', 9);
 // Remove trash feature
 remove_action( 'try_gutenberg_panel', 'wp_try_gutenberg_panel' );
 
+//Disable very useful modals that log you out
+remove_action( 'admin_enqueue_scripts', 'wp_auth_check_load' );
 
+/* Patch dumb security hole */
+add_action('template_redirect', 'disable_author_page');
+
+function disable_author_page() {
+    global $wp_query;
+    if ( is_author() ) {
+       $wp_query->set_404();
+       status_header(404);  exit; 
+    }
+}
 /*
 Show less info to users on failed login for security.
 (Will not let a valid username be known.)
@@ -86,3 +98,11 @@ function disable_emojicons_tinymce( $plugins ) {
     return array();
   }
 }
+
+/*
+Disable nagging
+*/
+add_action('admin_head', function() {
+ remove_action( 'admin_notices', 'update_nag',      3  );
+remove_action( 'admin_notices', 'maintenance_nag', 10 );
+});

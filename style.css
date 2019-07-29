@@ -4,7 +4,7 @@ Theme URI: https: //github.com/Nodws/WPstarter
 Description: Bootstrap 4 Starter Theme
 Author: Newemage
 Author URI: http://newemage.com
-Version: 0.7.1
+Version: 1.4.1
 License: MIT License
 License URI: http://opensource.org/licenses/MIT
 */
@@ -15,4 +15,5 @@ DO NOT put your CSS in here - put it in 'wpst.css'.
 /*  CSS Resets */ body, html { font-family: sans-serif; height: 100% } html { box-sizing: border-box; } *, *:before, *:after { box-sizing: inherit; outline:none } :active,:focus{ box-shadow:none }
 /*  Required WP rules */.size-auto, .size-full, .size-large, .size-medium, .size-thumbnail {max-width: 100%; height: auto }
 .alignnone {margin: 5px 20px 20px 0; } .aligncenter, div.aligncenter {display: block; margin: 5px auto 5px auto; } .alignright {float:right; margin: 5px 0 20px 20px; } .alignleft {float: left; margin: 5px 20px 20px 0; } a img.alignright {float: right; margin: 5px 0 20px 20px; } a img.alignnone {margin: 5px 20px 20px 0; } a img.alignleft {float: left; margin: 5px 20px 20px 0; } a img.aligncenter {display: block; margin-left: auto; margin-right: auto; }
-img { max-width: 100%; height: auto }
+img { max-width: 100%; height: auto } .full-width {   width: 100vw;   position: relative;   left: calc(-1 * (100vw - 100%) / 2);}
+

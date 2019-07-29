@@ -5,6 +5,8 @@ define('td', get_bloginfo('template_directory').'/' );
 define('hd', esc_url(home_url( '/' )));
 //Get temes path
 define('tp', get_template_directory('').'/');
+//Get home path
+define('hp', ABSPATH);
 	
 //Wp post schlep
 define('AUTOSAVE_INTERVAL', 3600 ); 
@@ -22,6 +24,14 @@ define('WP_AUTO_UPDATE_CORE', false );
 //Hide in production
 //define( 'WP_DEBUG', true );
 //ini_set( 'display_errors', 'On' );
+
+//Disable API
+add_filter( 'rest_api_init', 'rest_only_for_authorized_users', 99 );
+function rest_only_for_authorized_users($wp_rest_server){
+    if ( !is_user_logged_in() ) 
+        wp_die('sorry you are not allowed to access this data','cheatin eh?',403);    
+}
+
 
 function wpst_setup() {
 	//add_editor_style('theme/css/editor-style.css');
@@ -44,6 +54,9 @@ add_action('init', 'wpst_setup');
 
 function add_woo_support() {
 	add_theme_support( 'woocommerce' );
+	add_theme_support( 'wc-product-gallery-zoom' );
+	add_theme_support( 'wc-product-gallery-lightbox' );
+	add_theme_support( 'wc-product-gallery-slider' );
 }
 add_action( 'after_setup_theme', 'add_woo_support' );
 
